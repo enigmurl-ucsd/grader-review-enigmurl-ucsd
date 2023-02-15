@@ -33,10 +33,10 @@ then
 fi
 
 java -cp $CPATH org.junit.runner.JUnitCore TestListExamples >run_error.txt 2>&1
+ERR=$(grep "Tests run: .*" run_error.txt)
 
-if [[ $? -ne 0 ]]
+if [[ $? -eq 0 ]]
 then
-    ERR=$(grep "Tests run: .*" run_error.txt)
     echo "FAIL:" $ERR
 exit 1
 fi
